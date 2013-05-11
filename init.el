@@ -313,6 +313,7 @@
 (setq migemo-coding-system 'utf-8-unix) ; cmigemoをutf-8で使用する
 (load-library "migemo")
 (migemo-init)
+(setq search-whitespace-regexp nil) ; C-sを押す度に, 日本語では移動しない不具合を直す設定
 ;; キャッシュを保存する場所
 (setq migemo-pattern-alist-file "~/.emacs.d/cache/migemo/migemo-pattern")
 (setq migemo-frequent-pattern-alist-file "~/.emacs.d/cache/migemo/migemo-frequent")
@@ -549,6 +550,23 @@
 (push '("\\.cpp$" flymake-cc-init) flymake-allowed-file-name-masks)
 (push '("\\.h$" flymake-cc-init) flymake-allowed-file-name-masks)
 (push '("\\.hpp$" flymake-cc-init) flymake-allowed-file-name-masks)
+
+
+
+;;; @ flymake - java setting
+
+;; java-mode実行時にflymake-modeを実行する
+(add-hook 'java-mode-hook (lambda () (flymake-mode t )))
+;; javaのflymakeでmakefileを不要にする
+(defun flymake-java-init ()
+  (flymake-simple-make-init-impl
+   'flymake-create-temp-with-folder-structure nil nil
+   buffer-file-name
+   'flymake-get-java-cmdline))
+(defun flymake-get-java-cmdline
+  (source base-dir)
+  (list "javac"	(list "-J-Dfile.encoding=utf-8" "-encoding" "utf-8" source)))
+(push '("\\.java$" flymake-java-init) flymake-allowed-file-name-masks)
 
 
 
