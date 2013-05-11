@@ -126,7 +126,7 @@
 (setq eshell-ask-to-save-history (quote always)) ; 確認なしでヒストリ保存
 (setq eshell-history-file-name "~/.zsh_history") ; zsh のヒストリと共有
 (setq eshell-history-size 100000) ; ヒストリサイズ
-(setq eshell-hist-ignoredups t))  ; ヒストリの重複を無視
+(setq eshell-hist-ignoredups t)   ; ヒストリの重複を無視
 
 ;; メッセージバッファに保存される最大行数
 (setq message-log-max 10000)
