@@ -119,15 +119,6 @@
    (format "~/.emacs.d/cache/recentf/%s"
            (replace-regexp-in-string "\\." "_" system-configuration)))) ; recentf
 
-;; Eshellの設定
-(require 'eshell)
-(setq eshell-cmpl-ignore-case t)       ; 補完時に大文字小文字を区別しない
-(setq eshell-glob-include-dot-dot nil) ; ../ を * でマッチさせない
-(setq eshell-ask-to-save-history (quote always)) ; 確認なしでヒストリ保存
-(setq eshell-history-file-name "~/.zsh_history") ; zsh のヒストリと共有
-(setq eshell-history-size 100000) ; ヒストリサイズ
-(setq eshell-hist-ignoredups t)   ; ヒストリの重複を無視
-
 ;; メッセージバッファに保存される最大行数
 (setq message-log-max 10000)
 
