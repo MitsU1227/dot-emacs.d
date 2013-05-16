@@ -154,6 +154,9 @@
  'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 (package-initialize)
 
+;; デフォルトをテキストモードにする
+(setq default-major-mode 'text-mode)
+
 ;; C-zで中断されるのを無効化する
 (global-unset-key "\C-z")
 
@@ -581,7 +584,7 @@
 	 (local-file (file-relative-name
 		      temp-file
 		      (file-name-directory buffer-file-name))))
-    (list "tidy" (list local-file))))
+    (list "tidy" (list local-file)))) ; need installing tidy-html5
 (push '("\\.html$\\|\\.ctp" flymake-html-init) flymake-allowed-file-name-masks)
 (add-to-list
  'flymake-err-line-patterns
